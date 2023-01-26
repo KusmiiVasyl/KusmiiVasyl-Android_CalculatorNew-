@@ -12,96 +12,137 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:layout_width="wrap_content"
+        android:id="@+id/textView_input_numbers"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_columnSpan="4"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
         android:layout_gravity="fill"
-        android:text="12345678"
+        android:text="0"
         android:gravity="center"
         android:textAlignment="textEnd"
         android:textColor="@color/white"
-        android:textSize="@dimen/_40ssp"
+        android:autoSizeTextType="uniform"
+        android:maxLines="1"
         tools:ignore="RtlCompat" />
 
         <Button
+            android:id="@+id/button_clear"
             style="@style/CalculatorButtonsWhite"
-            android:text="C" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_c" />
 
         <Button
+            android:id="@+id/button_plus_or_minus_sign"
             style="@style/CalculatorButtonsWhite"
-            android:text="+/-" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_plus_minus" />
 
         <Button
+            android:id="@+id/button_percent"
             style="@style/CalculatorButtonsWhite"
-            android:text="%" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_percent" />
 
         <Button
+            android:id="@+id/button_division"
             style="@style/CalculatorButtonsRed"
-            android:text="/" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_division" />
 
         <Button
+            android:id="@+id/button_seven"
             style="@style/CalculatorButtonsWhite"
-            android:text="7" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_value_7" />
 
         <Button
+            android:id="@+id/button_eight"
             style="@style/CalculatorButtonsWhite"
             android:layout_gravity="fill"
-            android:text="8" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_value_8" />
 
         <Button
+            android:id="@+id/button_nine"
             style="@style/CalculatorButtonsWhite"
-            android:text="9" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_value_9" />
 
         <Button
+            android:id="@+id/button_multiplication"
             style="@style/CalculatorButtonsRed"
-            android:text="x" />
+            android:textSize="@dimen/_20ssp"
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_multiplication" />
 
         <Button
+            android:id="@+id/button_four"
             style="@style/CalculatorButtonsWhite"
-            android:text="4" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_value_4" />
 
         <Button
+            android:id="@+id/button_five"
             style="@style/CalculatorButtonsWhite"
-            android:text="5" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_value_5" />
 
         <Button
+            android:id="@+id/button_six"
             style="@style/CalculatorButtonsWhite"
-            android:text="6" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_value_6" />
 
         <Button
+            android:id="@+id/button_subtraction"
             style="@style/CalculatorButtonsRed"
-            android:text="-" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_subtraction" />
 
         <Button
+            android:id="@+id/button_one"
             style="@style/CalculatorButtonsWhite"
-            android:text="1" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_value_1" />
 
         <Button
+            android:id="@+id/button_two"
             style="@style/CalculatorButtonsWhite"
-            android:text="2" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_value_2" />
 
         <Button
+            android:id="@+id/button_three"
             style="@style/CalculatorButtonsWhite"
-            android:text="3" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_value_3" />
 
         <Button
+            android:id="@+id/button_addition"
             style="@style/CalculatorButtonsRed"
-            android:text="+" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_addition" />
 
         <Button
+            android:id="@+id/button_zero"
             style="@style/CalculatorButtonsWhite"
             android:layout_columnSpan="2"
             android:layout_gravity="fill"
-            android:text="0" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_value_0" />
 
         <Button
+            android:id="@+id/button_dot"
             style="@style/CalculatorButtonsWhite"
-            android:text="." />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_dot" />
 
         <Button
+            android:id="@+id/button_equal"
             style="@style/CalculatorButtonsRed"
-            android:text="=" />
+            android:onClick="onClickBtnCalc"
+            android:text="@string/btn_equal" />
 
 </GridLayout>

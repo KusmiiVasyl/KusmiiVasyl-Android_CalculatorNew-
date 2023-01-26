@@ -1,3 +1,30 @@
 <resources>
     <string name="app_name">Calculator</string>
+
+    <string name="btn_value_1">1</string>
+    <string name="btn_value_2">2</string>
+    <string name="btn_value_3">3</string>
+    <string name="btn_value_4">4</string>
+    <string name="btn_value_5">5</string>
+    <string name="btn_value_6">6</string>
+    <string name="btn_value_7">7</string>
+    <string name="btn_value_8">8</string>
+    <string name="btn_value_9">9</string>
+    <string name="btn_value_0">0</string>
+
+    <string name="btn_c">C</string>
+    <string name="btn_ce">CE</string>
+    <string name="btn_percent">%</string>
+    <string name="btn_plus_minus">+/-</string>
+    <string name="btn_division">/</string>
+    <string name="btn_multiplication">*</string>
+    <string name="btn_subtraction">-</string>
+    <string name="btn_addition">+</string>
+    <string name="btn_equal">=</string>
+    <string name="btn_dot">.</string>
+    <string name="btn_fraction">⅟x</string>
+    <string name="btn_root">√</string>
+    <string name="btn_square">x²</string>
+    <string name="btn_backspace">⌫</string>
+
 </resources>
