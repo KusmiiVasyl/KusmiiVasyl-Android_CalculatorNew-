@@ -2,12 +2,12 @@ package com.example.calculator
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import kotlinx.android.synthetic.main.activity_main.*
 import net.objecthunter.exp4j.ExpressionBuilder
 import java.text.DecimalFormat
+import kotlin.math.sqrt
 
 
 class MainActivity : AppCompatActivity() {
@@ -21,6 +21,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        outState.putString("text_display", textView_input_numbers.text.toString())
+        super.onSaveInstanceState(outState)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+        textView_input_numbers.text = savedInstanceState.getString("text_display")
+    }
+
     fun onClickBtnCalc(view: View) {
         val btn = view as Button
         btnAnimation(btn)
@@ -31,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
             button_plus_or_minus_sign.text -> {
                 val text = textView_input_numbers.text
-                if (text.contains('.') || text.first() != '-' && text.first() != '0') {
+                if (text.contains(',') || text.first() != '-' && text.first() != '0') {
                     textView_input_numbers.text = "-$text"
                 }
                 if (text.first() == '-') {
@@ -66,8 +76,8 @@ class MainActivity : AppCompatActivity() {
 
             button_dot.text -> {
                 if (textView_input_numbers.text.length >= 16) return
-                if (!textView_input_numbers.text.contains('.')) {
-                    textView_input_numbers.text = "${textView_input_numbers.text}."
+                if (!textView_input_numbers.text.contains(',')) {
+                    textView_input_numbers.text = "${textView_input_numbers.text},"
                 }
             }
 
@@ -116,9 +126,32 @@ class MainActivity : AppCompatActivity() {
             }
 
             button_fraction.text -> {
+                textView_input_numbers.text = textView_input_numbers.text.toString().replace(',', '.')
                 textView_input_numbers.text =
                     ExpressionBuilder("1/${textView_input_numbers.text}")
                         .build().evaluate().toString()
+                textView_input_numbers.text = textView_input_numbers.text.toString().replace('.', ',')
+            }
+
+            button_root.text -> {
+                textView_input_numbers.text = textView_input_numbers.text.toString().replace(',', '.')
+                val num = textView_input_numbers.text.toString().toDouble()
+                expression = "${sqrt(num)}"
+                calculateExpression()
+            }
+
+            button_sqw.text -> {
+                if (textView_input_numbers.text.length >= 16) return
+                val num = textView_input_numbers.text.toString().toDouble()
+                expression = "$num * $num"
+                calculateExpression()
+            }
+
+            button_backspace.text -> {
+                var text = textView_input_numbers.text
+                text = text.substring(0, text.length - 1)
+                if (text.isEmpty()) text = "0"
+                textView_input_numbers.text = text
             }
 
         }
@@ -133,12 +166,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun addDigitToDisplayNumber(btnDigit: String) {
-        if (textView_input_numbers.text.length >= 16) return
         isCurrentBtnOperationClick = false
         if (textView_input_numbers.text == "0" || isBtnOperationClick) {
             textView_input_numbers.text = ""
             isBtnOperationClick = false
         }
+        if (textView_input_numbers.text.length >= 16) return
         textView_input_numbers.text = "${textView_input_numbers.text}${btnDigit}"
     }
 
@@ -151,7 +184,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         if (operation == "%") {
-            calculatePersentage()
+            calculatePercentage()
             calculateExpression()
             expression = "$expression%"
             return
@@ -185,13 +218,15 @@ class MainActivity : AppCompatActivity() {
     private fun calculateExpression() {
         isBtnOperationClick = true
         isCurrentBtnOperationClick = true
+        expression = expression.replace(',', '.')
         resultNumber = ExpressionBuilder(expression).build().evaluate()
         val numFormat = DecimalFormat("#.##############")
         textView_input_numbers.text = numFormat.format(resultNumber)
+        textView_input_numbers.text = textView_input_numbers.text.toString().replace('.', ',')
         expression = "${textView_input_numbers.text}"
     }
 
-    private fun calculatePersentage() {
+    private fun calculatePercentage() {
         var curNumber: String = " "
         var prevNumber: String = ""
         curNumber = textView_input_numbers.text.toString()

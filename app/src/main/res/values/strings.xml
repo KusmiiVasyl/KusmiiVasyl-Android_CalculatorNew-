@@ -21,7 +21,7 @@
     <string name="btn_subtraction">-</string>
     <string name="btn_addition">+</string>
     <string name="btn_equal">=</string>
-    <string name="btn_dot">.</string>
+    <string name="btn_dot">,</string>
     <string name="btn_fraction">⅟x</string>
     <string name="btn_root">√</string>
     <string name="btn_square">x²</string>
